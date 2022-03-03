@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Add Font Awesome for element symbols if extra time. -->
+	<link href="./css/index.css" rel="stylesheet"/>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<title>Pokemon Battle Review</title>
+</head>
+<body>
+	<div class="container">	
+		<main>
+			<div class="container with-flex container-main">
+				<div class="with-flex" id="pkmn-container">
+					<div id="enemy-pkmn">				
+					</div>
+					<div id="active-pkmn">
+						<div class="my-pkmn" id="fire-pkmn">
+							<img src="https://img.pokemondb.net/sprite/black-white/anim/back-normal/bulbasaur.gif" alt="Bulbasaur" />
+						</div>
+						<div class="my-pkmn" id="grass-pkmn">
+							<img src="https://img.pokemondb.net/sprite/black-white/anim/back-normal/bulbasaur.gif" alt="Bulbasaur" />
+						</div>
+						<div class="my-pkmn" id="water-pkmn">
+							<img src="https://img.pokemondb.net/sprite/black-white/anim/back-normal/bulbasaur.gif" alt="Bulbasaur" />
+						</div>
+					</div>
+				</div>
+				<div id="action-bar" class="container with-flex">
+					<button class="btn" id="end-game-btn"> <!-- Looks pretty but problem with clicking the buttons -->
+						<i class="fa-solid fa-hand fa-2x"></i></br />
+					</button>
+					<button class="btn attack" id="fire-attack-btn" name="fire-pkmn">
+						<i class="fa-solid fa-fire fa-2x"></i><br />
+					</button>
+					<button class="btn attack" id="grass-attack-btn" name="grass-pkmn">
+						<i class="fa-solid fa-leaf fa-2x"></i><br />
+					</button>
+					<button class="btn attack" id="water-attack-btn" name="water-pkmn">
+						<i class="fa-solid fa-droplet fa-2x"></i><br />
+					</button>
+					<button class="btn" id="reset-btn">
+						<i class="fa-solid fa-rotate-left fa-2x"></i><br />
+					</button>
+				</div>
+			</div>
+		</main>
+		
+	</div>
+	<script src="./js/index.js"></script>
+</body>
+
+</html>
