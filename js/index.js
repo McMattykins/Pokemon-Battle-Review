@@ -3,12 +3,14 @@
 2. Randomizer for correct answer - Complete
 3. Reset function - Complete
 4. Game loop
+5. Move animations from CSS into JS to easily trigger them.
 
 Strech goals:
 1. Teams with turn tracking
 2. In game point counter for teams
 3. Add Scoreboard to closing screen.
 4. Randomizer for enemy pokemon and if shiny
+5. Have rules displayed outside of the main container
 */
 
 /*
@@ -58,6 +60,13 @@ const enemies = [
   { image: "wailord", name: "Wailord" },
 ];
 
+//Animation Variables
+const attackAnimationTime = 2000;
+const hitAnimationTime = 500;
+const hitAnimationIterations = 2;
+const hitDurationTotal = hitAnimationTime * hitAnimationIterations;
+let myPkmnTimeOut = attackAnimationTime + hitDurationTotal;
+
 let readyPkmn = []; //Keeps track of which pokemon can still attack.
 //let winner = 0; //Track the winning team ###Currently no purpose###
 
@@ -85,10 +94,10 @@ function pkmnBtn(e) {
     pkmnAttack(e.target);
     if (randomPkmn() === e.target.id) {
       console.log(`You hit the enemy with ${e.target.id}`);
-      pkmnHit(enemyPkmn);
+      pkmnHit(enemyPkmn.children[0]); //targeting the child image element instead of the container to prevent visual bug
     } else {
       console.log(`You missed the enemy with ${e.target.id}`);
-      pkmnHit(document.getElementById(pkmn.name));
+      pkmnHit(document.getElementById(pkmn.name).children[0]);
     }
     readyPkmn.splice(readyPkmn.indexOf(e.target.id), 1);
     console.log("After Splice: " + readyPkmn);
@@ -129,10 +138,8 @@ function setEnemy() {
 function pkmnAttack(e) {
   const pkmn = document.getElementById(e.name);
   pkmn.style.display = "block";
-  setTimeout(
-    () => (document.getElementById(e.name).style.display = "none"),
-    4000
-  );
+  myPkmnAttack();
+  setTimeout(() => (pkmn.style.display = "none"), myPkmnTimeOut);
 }
 
 //Animation for pokemon when hit.
@@ -155,11 +162,13 @@ function pkmnHit(e) {
     ],
     {
       //Timings
-      duration: 500,
-      interations: 2,
+      duration: hitAnimationTime,
+      interations: hitAnimationIterations,
     }
   );
 }
+
+function myPkmnAttack() {}
 
 //Button listeners
 endGameBtn.addEventListener("click", endGame);
